@@ -10,7 +10,7 @@ export default function SimpleCalculator() {
     event.preventDefault();
     console.log(event);
 
-    if(num1 == NaN || num2 == NaN ){
+    if(!num1 || !num2 ){
       alert("Please enter value in number 1 and number 2")
     }
     else{
