@@ -34,7 +34,7 @@ label
   color: white;
   font-size: 13px;
 }
-input {
+input,select {
   width: 100%;
   font-size: 1rem;
   padding: 15px 4px;
@@ -46,6 +46,13 @@ input {
   border-left-style: hidden;   
   background-color: rgb(241, 241, 241);
 }
+
+option{
+  text-align: center;
+  font-weight: bold;
+  font-size: large;
+}
+
  
 .btn {
   display: block;

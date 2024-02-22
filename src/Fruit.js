@@ -1,8 +1,10 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export default function Fruit(){
     let [fruit, setFruit] = useState('Orange');
     const [count, setCount] = useState(0);
+
+    
 
     const counter = ()=>{
         setCount((preState)=>preState+1)

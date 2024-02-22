@@ -4,18 +4,48 @@ export default function SimpleCalculator() {
 
   const [num1, setNum1] = useState();
   const [num2, setNum2] = useState();
-  const [add, setAdd] = useState("0");
+  const [opt, setOpt] = useState();
+  const [result, setResult] = useState("0");
 
   const calcSum = (event)=>{
     event.preventDefault();
     console.log(event);
 
-    if(!num1 || !num2 ){
-      alert("Please enter value in number 1 and number 2")
+    if(!num1 || !num2  ){
+      alert("Please enter value in number 1 and number 2.")
+    }
+    else if( opt === "plus")
+    {
+      const result = parseInt(num1) + parseInt(num2);
+      setResult(result)
+    }
+    else if( opt === "minus")
+    {
+      if(num1 < num2){
+        alert("Cannot calculate! First number is less than second number")
+      }
+      else{
+      const result = parseInt(num1) - parseInt(num2);
+      setResult(result)
+      }
+    }
+    else if( opt === "multiply")
+    {
+      const result = parseInt(num1) * parseInt(num2);
+      setResult(result)
+    }
+    else if( opt === "divide")
+    {
+      if(parseInt(num2) === 0 ){
+        alert("Cannot divide, Second number cannot be ZERO.")
+      }
+      else{
+        const result = parseInt(num1) / parseInt(num2);
+        setResult(result)
+      }
     }
     else{
-      const add = parseInt(num1) + parseInt(num2);
-      setAdd(add)
+      alert ("Please select an opeation.")
     }
   }
 
@@ -32,6 +62,19 @@ export default function SimpleCalculator() {
                       placeholder='Enter first number' value={num1} 
                       onChange={(e)=>setNum1(e.target.value)} />
           </div>
+          
+          <div>
+            <label htmlFor='operation'> Calculation method : </label>
+            <div>
+            <select className='' name='operation' onChange={(e)=>setOpt(e.target.value)}>
+              <option value="">Select operaton...</option>
+              <option value="plus"> + </option>
+              <option value="minus"> - </option>
+              <option value="multiply"> x </option>
+              <option value="divide"> ÷ </option>
+            </select>
+            </div>
+          </div>
 
           {/* input number 2 */} 
           <div>
@@ -41,12 +84,12 @@ export default function SimpleCalculator() {
                       onChange={(e)=>setNum2(e.target.value)} />
           </div>
 
-          <button className='btn' type='submit'>Sum</button>
+          <button className='btn' type='submit'>Calculate</button>
 
 
         </form>
           <div className='center'>
-              <h3>Your sum is : {add}</h3>
+              <h3>Your sum is : {result}</h3>
           </div>
       </div>
     </div>
